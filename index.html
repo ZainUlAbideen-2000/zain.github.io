@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>By zain ul abideen | 64-bit operating system</title>
+<meta charset="utf-8">
+<meta name="generator" content="Hugo 0.82.0" />
+<meta name="description" content="my blog">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://zainulabideen-2000.github.io/zain.github.io/css/index.css">
+<link rel="canonical" href="https://zainulabideen-2000.github.io/zain.github.io/">
+<link rel="alternate" type="application/rss+xml" href="/zain.github.io/index.xml" title="64-bit operating system">
+
+<header>
+  
+    <a href="https://zainulabideen-2000.github.io/zain.github.io/" class="title">64-bit operating system</a>
+  
+  
+    <nav>
+    
+      <a href="/zain.github.io/about/">About</a>
+    
+    </nav>
+  
+</header>
+
+
+
+
+  
+
+
+
+
+<article>
+  <header><h1>By zain ul abideen</h1></header>
+  <ul class="archive">
+  </ul>
+  <h3 id="tools-used">Tools used</h3>
+<ol>
+<li>Docker</li>
+<li>qemu</li>
+<li>VSCODE</li>
+</ol>
+<h3 id="task-1">TASK 1</h3>
+<p>At first step an image was created in the docker container in the buildenv folder named myos. When the image was processed, I created asm files.I used the multiboot2 specification. The header.asm defines the information for our architecture along with some checksum value and a magic number which is required by multiboot2. Initially an &lsquo;ok&rsquo; was printed using assembly, to print this ok a code was written in main.asm and ok an hexa value was used which was moved into an address to print the &lsquo;ok&rsquo;. A linker file was created through which the operating system was linked together. It was devided into two sections; boot section which had the multiboot header and than a text section which conatined all cpu instructions. Then a grub.cnfg file was created which created an iso file inside a kernel.bin folder. To speed along the build process a makefile was created which basically just rebuilds only those files that were modified. Inside here the iso file was created using grub-mkrescue command. After this the operating sysytem was emulated using qemu by giving it the path to the iso file. Qemu had to be first added to the path by modifying the enironment variables for the system. After the emulation was successful, an ok was printed.</p>
+<h3 id="task-2">TASK 2</h3>
+<p>Our 32 bit operating system was complete now it was the time to bild 64-bit operating system.
+In this process concepts of stack and langing was used. All the segemnts were initialised to 0 for main64.asm to work. After that c code was written to print any text on screen. All the printing interface was written in a print.h file,it contained all the print functions and an enum for storing colours for the text. Print.h was then used as a header file in the main.c and print.c file. When the program is emulated, the screen is at first cleared using print_clear function which is defined in print.h and implemented in print.c. The string is printed using print_str function written in print.c file. This function takes in a null terminated array and loops unitl null characted is found, until it is found it prints the character in current array index onto the screen. SEECS is then printed using this function, by passing to the function a string generated from a text to ascii art generator.</p>
+<h3 id="output">OUTPUT</h3>
+<p><img src="https://user-images.githubusercontent.com/57444610/115379391-ecab4a80-a1ea-11eb-891c-ce2b3aa96f98.png" alt="alt text!"></p>
+
+</article>
+
+
+
+
+
+</html>
